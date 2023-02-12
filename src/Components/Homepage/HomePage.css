@@ -1,0 +1,6 @@
+.blog-post{
+    /* background-color: black; */
+    margin: 2rem;
+    display: flex;
+    width: max-content;
+}

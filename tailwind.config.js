@@ -16,12 +16,17 @@ module.exports = {
           lg: "960px",
           lgl: "1024px",
           xl: "1280px",
+        
+        },
+        height:{
+          xvh:'90vh'
         },
         fontFamily: {
           titleFont: "Roboto",
           bodyFont: "Poppins",
         },
         colors: {
+          whitesmoke:"#f5f5f5",
           black:"#000000",
           nav_white:"#ffffff",
           amazon_blue: "#131921",

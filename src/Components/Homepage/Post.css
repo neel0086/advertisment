@@ -1,4 +1,12 @@
 .card{
+    width: 400px;
+    height: 400px;
     display: flex;
     /* width: max-content; */
+}
+.p-video{
+    width:100%;
+}
+img{
+    width: 100%;
 }

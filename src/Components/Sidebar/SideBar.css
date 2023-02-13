@@ -1,0 +1,27 @@
+
+.side-bar {
+    background: #202123;
+    min-width: 10%;
+    padding: 2px;
+    box-shadow: 0 0 10px #333;
+    min-height: 100%;
+    color: #ffffff;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    overflow-y: scroll;
+}
+
+.side-bar ul {
+    list-style: none;
+}
+.s-category {
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #ffffff;
+}
+
+.s-category li{
+    margin: 0.8rem 0;
+}
+

@@ -1,6 +1,19 @@
+.home_page{
+    
+    height: 90vh;
+    margin-left: 2rem;
+    width: 90%;
+    overflow-y: scroll;
+    position: relative;
+}
 .blog-post{
     /* background-color: black; */
-    margin: 2rem;
+    margin: 4rem;
+    /* display: flex; */
+    width: 20rem;
+    height: 20rem;
+}
+.container{
     display: flex;
-    width: max-content;
+    flex-direction: row;
 }

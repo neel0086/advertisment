@@ -1,17 +1,18 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import CategoryList from './CategoryList'
+import CityList from './CityList'
+import './SideBar.css'
 function SideBar() {
-    const [searchCriteria,setSearchCriteria] = useState({city:'all',category:'all'})
+    const [searchCriteria, setSearchCriteria] = useState({ city: 'All', category: 'All' })
 
-    const handleSearchCriteria = (event)=>{
-        const {name,value} = event.target;
-        // console.log(name)
-        // console.log(value)
-        console.log(event.target)
+    const handleSearchCriteria = (name, value) => {
+
+        if ('city' === name && value === searchCriteria.city) return;
+        console.log(name, " ", value)
         setSearchCriteria(prevState => {
             return ({
                 ...prevState,
-                [name]:value
+                [name]: value
             })
         })
     }
@@ -29,17 +30,8 @@ function SideBar() {
                 <li>About</li>
                 <li>Contact</li>
             </ul> */}
-            <h3>City</h3>
-            <ul>
-                <label for="city">Choose a City:</label>
-                <select name="cars" id="city">
-                    <option value="nadiad">Nadia</option>
-                    <option value="baroda">Baroda</option>
-                    <option value="ahemdabad">Ahemdabad</option>
-                    <option value="surat">Surat</option>
-                </select>
-            </ul>
-            <CategoryList handleCategory={handleSearchCriteria}/>
+            <CityList handleCity={handleSearchCriteria} />
+            <CategoryList handleCategory={handleSearchCriteria} searchCriteria={searchCriteria} />
         </div>
     )
 }

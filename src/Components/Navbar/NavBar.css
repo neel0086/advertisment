@@ -1,4 +1,44 @@
-.navbar-nav{
+.nav-header {
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.243);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.navbar-nav {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    
+}
+
+.navbar-nav {
+    display: flex;
+}
+
+.nav-item {
+    list-style: none;
+    margin: 0 20px;
+}
+
+.nav-item a {
+    color: #fff;
+    text-decoration: none;
+    
 }

@@ -1,23 +1,57 @@
-function CategoryList({handleCategory}) {
-    const categories = ['All','Food','Clothes','Furniture','Grocery','Stationery'];
+import React from "react";
+import "./CategoryList.css"
+function CategoryList({ handleCategory, searchCriteria }) {
+    const categories = [
+        "All",
+        "Food",
+        "Clothes",
+        "Furniture",
+        "Grocery",
+        "Stationery",
+        "All",
+        "Food",
+        "Clothes",
+        "Furniture",
+        "Grocery",
+        "Stationery",
+        "All",
+        "Food",
+        "Clothes",
+        "Furniture",
+        "Grocery",
+        "Stationery",
+        "All",
+        "Food",
+        "Clothes",
+        "Furniture",
+        "Grocery",
+        "Stationery",
+        
+        
+        
+        
+    ];
+    const smoothScroll = (e) =>{
+        
+    }
     return (
         <>
-            <h3>Category</h3>
-            <ul>
-                {/* <li></li>
-                <li>Food</li>
-                <li>Clothes</li>
-                <li>Furniture</li>
-                <li>Grocery</li>
-                <li>Stationery</li> */}
-                {
-                    categories.map((category,index)=>(
-                        <li key={index} name='category' value={category} style={{cursor:"pointer"}} onClick={handleCategory}>{category}</li>
-                    ))
-                }
-            </ul>
+            <div className="s-category w-full flex">
+                {categories.map((category, index) => (
+                    <div
+                        key={index}
+                        className="c-box cursor-pointer text-black flex items-center justify-center "
+
+                        onClick={() => {
+                            handleCategory("category", category);
+                        }}
+                    >
+                        {category}
+                    </div>
+                ))}
+            </div>
         </>
-    )
+    );
 }
 
-export default CategoryList
+export default CategoryList;

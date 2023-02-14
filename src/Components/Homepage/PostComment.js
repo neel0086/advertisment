@@ -3,6 +3,7 @@ import "./PostComment.css"
 import Man from "../../images/man.png"
 import { BlogState } from '../Hooks/BlogState'
 import { db } from '../../firebase'
+import Send from "../../images/send.png"
 function Comment({item}) {
   // const {} = BlogState(item.id)
   const doComment = () =>{
@@ -95,9 +96,9 @@ function Comment({item}) {
 
 
       </div>
-      <div class="space-y-4 px-2 pb-2">
-        <input type="text" placeholder='No Abusive Comments' className='bg-whitesmoke p-2 w-full outline-none font' />
-        <span onClick={doComment}>send</span>
+      <div class=" p-2.5 m-2 flex items-center justify-center bg-whitesmoke">
+        <input type="text" placeholder='No Abusive Comments' className='bg-whitesmoke w-full outline-none font' />
+        <img onClick={doComment} src={Send} class="w-6"/>
       </div>
     </>
   )

@@ -83,7 +83,7 @@ function PostUi({ item }) {
                 key={item.id}
                 className="glass postui h-auto border-[1px] border-gray-200 pt-6 z-30 shadow-none hover:shadow-testShadow duration-200 relative flex flex-col gap-1"
             >
-                <span className="text-xs capitalize italic absolute top-2 right-2 text-gray-500">
+                <span className="text-xs capitalize italic absolute top-2 left-3 text-gray-500">
                     {item.category}
                 </span>
                 {/* ========== Product Image Start here ============== */}
@@ -101,12 +101,12 @@ function PostUi({ item }) {
                     <div className="px-2 flex items-center justify-between">
                         {/* <h2 className="font-titleFont tracking-wide text-lg text-amazon_blue font-medium">
                             {item.name.substring(0, 20)}
-                        </h2> */}
+                        </h2>
                         <p className="text-sm text-gray-600 font-semibold">
                             ${item.price}
                         </p>
                     </div>
-                    {/* <div className="px-2">
+                    <div className="px-2">
                         <p className="text-sm">{item.description.substring(0, 100)}</p>
                         <div className="text-yellow-500 flex">
                             <StarIcon />
@@ -115,24 +115,24 @@ function PostUi({ item }) {
                             <StarIcon />
                             <StarIcon />
                         </div>
-                    </div> */}
+                    </div>
                     <div className="flex flex-row justify-between">
                         <p
                             onClick={LikePost}
-                            className="cursor-pointer flex flex-row items-center align-middle py-1.5 rounded-md mt-3 font-titleFont font-medium text-base duration-200"
+                            className="cursor-pointer flex flex-row items-center align-middle py-1 rounded-md mt-3 font-titleFont font-medium text-base duration-200"
                         >
                             <span className="pb-2">
-                                {!likePost ? <img className="transition-transform" src={Like} /> : <img className="transition-transform" src={Liked} />}
+                                {likePost ? <img className="transition-transform" src={Like} /> : <img className="transition-transform" src={Liked} />}
                             </span>
-                            <span >Like</span>
+                            {/* <span >Like</span> */}
                         </p>
                         <div className="flex flex-row">
                             <div
                                 onClick={openModal}
                                 className="cursor-pointer flex flex-row items-center align-middle py-1.5  rounded-md mt-3 font-titleFont font-medium text-base duration-200"
                             >
-                                <img src={Comment} />
-                                <span>Comment</span>
+                                <img src={Comment} className="w-8"/>
+                                {/* <span>Comment</span> */}
                             </div>
                         </div>
                     </div>

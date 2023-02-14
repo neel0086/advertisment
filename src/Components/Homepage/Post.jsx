@@ -26,35 +26,24 @@ const Products = () => {
     }
     getPosts();
 
-    // function givePosts() {
-    //   let temp = [];
-    //   const unSubscribe = db.blogs.orderBy('createdAt', 'desc').onSnapshot((querySnapshot) => {
-    //     console.log('invoked');
-    //     temp = [];
-    //     let promises = [];
-    //     querySnapshot.forEach((doc) => {
-    //       let data = { data: { ...doc.data() }, id: doc.id }
-
-    //       // we can use this when we want to get user info to gether
-    //       // promises.push(db.users.doc(doc.data().userId).get().then(snapshot => {
-    //       //     //console.log(snapshot);
-    //       //     //console.log(snapshot.data());
-    //       //     let data = {
-    //       //         ...doc.data(), postId: doc.id, 
-    //       //         uProfileUrl: snapshot.data().profileUrl,
-    //       //         uName: snapshot.data().name
-    //       //     };
-    //       // temp.push(data);
-    //       // }));
-    //       temp.push(data);
-    //     });
-    //     Promise.all(promises).then(() => {
-    //       setProductData(temp);
-    //     })
-    //   });
-    //   return unSubscribe;
-    // }
-
+    function abc() {
+      let temp = [];
+      const unSubscribe = db.blogs.orderBy('createdAt', 'desc').onSnapshot((querySnapshot) => {
+        console.log('invoked');
+        temp = [];
+        let promises = [];
+        querySnapshot.forEach((doc) => {
+          console.log(doc);
+          let data = { data: { ...doc.data() }, id: doc.id }
+          temp.push(data);
+        });
+        Promise.all(promises).then(() => {
+          setProductData(temp);
+        })
+      });
+      return unSubscribe;
+    }
+    abc();
 
   }, [])
 

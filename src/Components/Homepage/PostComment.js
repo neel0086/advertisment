@@ -9,7 +9,8 @@ function Comment({item}) {
     db.blogs.add({
       blogName:item.name,
       blogLikes:0,
-      blogComment:[]
+      blogComment:[],
+      Time:db.getCurrentTimestamp()
     })
   }
   return (

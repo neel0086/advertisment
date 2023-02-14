@@ -6,6 +6,7 @@ import Furniture from "../../images/furniture.png";
 import Clothes from "../../images/clothes.png";
 import Groceries from "../../images/groceries.png";
 import Stationery from "../../images/stationery.png";
+import UploadBlog from "../Uploadblog/UploadBlog";
 
 function CategoryList({ handleCategory, searchCriteria }) {
     const categories = [
@@ -14,15 +15,9 @@ function CategoryList({ handleCategory, searchCriteria }) {
         {"name":Clothes,title:"Clothes"},
         {"name":Groceries,title:"Grocery"},
         {"name":Stationery,title:"Stationery"},
-        
-
-
-
-
     ];
-    const smoothScroll = (e) => {
+    
 
-    }
     useEffect(() => {
         print_state("sts");
     }, [])
@@ -33,6 +28,14 @@ function CategoryList({ handleCategory, searchCriteria }) {
             <div className="flex ml-7 font-titleFont mt-5 flex-col ">
                 <h2 className="text-2xl font-titleFont font-bold">Whats your choice today?</h2>
                 <p className="invert-60">Choose from our wide range of suggestions verified by people like you</p>
+                <p className="invert-60 pl-5">OR</p>
+                <div className="flex flex-row">
+                    <span className="invert-60">
+                        Give some time and help someone to grow 
+                    </span>
+                    &nbsp;&nbsp;&nbsp;
+                    <div className="cursor-pointer font-semibold"><UploadBlog /></div>    
+                    </div>
             </div>
 
             <div className="flex ml-7 font-titleFont mt-5 flex-col ">

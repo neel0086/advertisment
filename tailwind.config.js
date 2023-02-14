@@ -23,6 +23,7 @@ module.exports = {
         },
         fontFamily: {
           titleFont: "Roboto",
+          audiowide:'Audiowide',
           bodyFont: "Poppins",
         },
         colors: {
@@ -36,6 +37,12 @@ module.exports = {
           lightText: "#ccc",
           quantity_box: "#F0F2F2",
           footerBottom: "#131A22",
+        },
+        invert:{
+          25:'.25',
+          50:'.50',
+          60:'0.6',
+          75:'.75'
         },
         boxShadow: {
           testShadow: "0px 0px 32px 1px rgba(199,199,199,1)",

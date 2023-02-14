@@ -10,19 +10,19 @@ import UploadBlog from "../Uploadblog/UploadBlog";
 
 function CategoryList({ handleCategory, searchCriteria }) {
     const categories = [
-        {"name":Food,title:"food"},
-        {"name":Furniture,title:"Furniture"},
-        {"name":Clothes,title:"Clothes"},
-        {"name":Groceries,title:"Grocery"},
-        {"name":Stationery,title:"Stationery"},
+        { "name": Food, title: "food" },
+        { "name": Furniture, title: "Furniture" },
+        { "name": Clothes, title: "Clothes" },
+        { "name": Groceries, title: "Grocery" },
+        { "name": Stationery, title: "Stationery" },
     ];
-    
+
 
     useEffect(() => {
         print_state("sts");
     }, [])
-    
-    
+
+
     return (
         <>
             <div className="flex ml-7 font-titleFont mt-5 flex-col ">
@@ -31,18 +31,18 @@ function CategoryList({ handleCategory, searchCriteria }) {
                 <p className="invert-60 pl-5">OR</p>
                 <div className="flex flex-row">
                     <span className="invert-60">
-                        Give some time and help someone to grow 
+                        Give some time and help someone to grow
                     </span>
                     &nbsp;&nbsp;&nbsp;
-                    <div className="cursor-pointer font-semibold"><UploadBlog /></div>    
-                    </div>
+                    <div className="cursor-pointer font-semibold"><UploadBlog /></div>
+                </div>
             </div>
 
             <div className="flex ml-7 font-titleFont mt-5 flex-col ">
                 <h2 className="text-lg font-titleFont font-medium">Select Category</h2>
             </div>
 
-            
+
 
             <div className="s-category w-full flex">
                 {categories.map((category, index) => (
@@ -54,14 +54,14 @@ function CategoryList({ handleCategory, searchCriteria }) {
                             handleCategory("category", category);
                         }}
                     >
-                        <img src={category["name"]} className="flex object-fill p-2"/>
+                        <img src={category["name"]} className="flex object-fill p-2" />
                         <p className="font-audiowide">{category["title"]}</p>
                     </div>
                 ))}
             </div>
             <div className="flex ml-7 font-titleFont mt-5 flex-row ">
-                <select onchange={(e) =>{console.log(e.target.id)}} id="sts" name="stt" class="form-control w-40 mr-2" required></select>
-                <select id="state" class="form-control w-40" required></select>
+                <select onChange={(e) => { console.log(e.target.id) }} id="sts" name="stt" className="form-control w-40 mr-2" required></select>
+                <select id="state" className="form-control w-40" required></select>
             </div>
             <div className="flex w-full font-titleFont mt-5 flex-row justify-between px-10">
                 <p>2223 options available</p>

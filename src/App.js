@@ -18,7 +18,6 @@ function App() {
           email: user.email,
           uuid: user.uid,
           photoUrl: user.photoURL
-
         }))
       }
     })
@@ -27,20 +26,20 @@ function App() {
     <>
 
       <Router>
-        
-          <div className='App'>
-            <NavBar />
-            <Routes>
-              <Route path="/" element={<BlogPage />}></Route>
-            </Routes>
-            <Routes>
-              <Route path="/profile" element={<Profile />}></Route>
-            </Routes>
-            <Routes>
-              <Route path="/login" element={<Login />}></Route>
-            </Routes>
-          </div>
-        
+
+        <div className='App'>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<BlogPage />}></Route>
+          </Routes>
+          <Routes>
+            <Route path="/profile" element={<Profile />}></Route>
+          </Routes>
+          <Routes>
+            <Route path="/login" element={<Login />}></Route>
+          </Routes>
+        </div>
+
       </Router>
     </>
   )

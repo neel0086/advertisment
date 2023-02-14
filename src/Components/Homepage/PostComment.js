@@ -1,7 +1,17 @@
 import React from 'react'
 import "./PostComment.css"
 import Man from "../../images/man.png"
-function Comment() {
+import { BlogState } from '../Hooks/BlogState'
+import { db } from '../../firebase'
+function Comment({item}) {
+  // const {} = BlogState(item.id)
+  const doComment = () =>{
+    db.blogs.add({
+      blogName:item.name,
+      blogLikes:0,
+      blogComment:[]
+    })
+  }
   return (
     <>
       <div class="antialiased overflow-scroll mx-3 max-w-screen-sml">
@@ -86,6 +96,7 @@ function Comment() {
       </div>
       <div class="space-y-4 px-2 pb-2">
         <input type="text" placeholder='No Abusive Comments' className='bg-whitesmoke p-2 w-full outline-none font' />
+        <span onClick={doComment}>send</span>
       </div>
     </>
   )

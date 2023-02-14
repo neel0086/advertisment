@@ -40,7 +40,7 @@ function PostUi({ item }) {
                     <div className="h-1/10 px-2 bg-white flex flex-col gap-1 z-10">
                         <div className="px-2 flex items-center justify-between">
                             <h2 className="font-titleFont tracking-wide text-lg text-amazon_blue font-medium">
-                                {item.title.substring(0, 20)}
+                                {item.name.substring(0, 20)}
                             </h2>
                             <p className="text-sm text-gray-600 font-semibold">
                                 {item.price}
@@ -49,7 +49,7 @@ function PostUi({ item }) {
 
 
                     </div>
-                    <PostComment />
+                    <PostComment item={item}/>
                 </div>
 
             </Modal>
@@ -63,7 +63,7 @@ function PostUi({ item }) {
                 {/* ========== Product Image Start here ============== */}
                 <div className="w-full h-auto flex items-center justify-center relative group">
                     <img
-                        className="p-2 h-auto object-contain"
+                        className="p-2 h-auto object-contain "
                         src={item.image}
                         alt="ProductImg"
                     />
@@ -76,7 +76,7 @@ function PostUi({ item }) {
                 <div className="px-2  flex flex-col gap-1 z-10">
                     <div className="px-2 flex items-center justify-between">
                         <h2 className="font-titleFont tracking-wide text-lg text-amazon_blue font-medium">
-                            {item.title.substring(0, 20)}
+                            {item.name.substring(0, 20)}
                         </h2>
                         <p className="text-sm text-gray-600 font-semibold">
                             ${item.price}

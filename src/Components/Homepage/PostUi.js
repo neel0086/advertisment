@@ -33,7 +33,6 @@ function PostUi({ item }) {
         setOpen(false)
     }
     function handleSubmit(e) {
-        console.log(e.target)
         closeModal();
     }
     const LikePost = () => {

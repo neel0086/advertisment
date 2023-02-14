@@ -1,38 +1,58 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import { db } from '../../firebase'
+import {
+    ref,
+    uploadBytes,
+    getDownloadURL,
+    listAll,
+    list,
+} from "firebase/storage";
+import { v4 } from "uuid";
+import { storage } from "../../firebase";
 
 function UploadBlog() {
-    const initials = {
-        shopname:'',
-        bloghead:'',
-        city:'',
-        state:'',
-        description:''
 
+    const [imageUpload, setImageUpload] = useState(null);
+    const initials = {
+        shopname: '',
+        bloghead: '',
+        city: '',
+        state: '',
+        description: ''
     }
+
     const [open, setOpen] = useState(false)
     const [name, setName] = useState("")
-    const [authData,setAuthData] = useState(initials);
+    const [authData, setAuthData] = useState(initials);
     function openModal() {
         setOpen(true)
     }
     function closeModal() {
         setOpen(false)
     }
-    const handleChange = (e) =>{
-        setAuthData({...authData, [e.target.name]:e.target.value})
+    const handleChange = (e) => {
+        setAuthData({ ...authData, [e.target.name]: e.target.value })
         console.log(authData)
     }
-    const onUpload = () =>{
+    const onUpload = () => {
+
+        if (imageUpload == null) return;
+        const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+        uploadBytes(imageRef, imageUpload).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then((url) => {
+                alert('done')
+            });
+        });
+
         db.blogs.add({
-            heading:authData["shopname"],
-            title:authData["bloghead"],
-            state:authData["state"],
-            city:authData["city"],
-            description:authData["description"],
-            likes:[],
-            comment:[]
+            heading: authData["shopname"],
+            title: authData["bloghead"],
+            state: authData["state"],
+            city: authData["city"],
+            description: authData["description"],
+            likes: [],
+            comment: []
         })
     }
     return (
@@ -42,13 +62,15 @@ function UploadBlog() {
                 centered>
                 <div className=" h-fit flex">
                     <div className="w-full">
-
-
-
                         <div className="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                             <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
                                 <div className="text-gray-600">
-                                    Upload Images or videos
+                                    <input
+                                        type="file"
+                                        onChange={(event) => {
+                                            setImageUpload(event.target.files[0]);
+                                        }}
+                                    />
                                 </div>
 
                                 <div className="lg:col-span-2">
@@ -62,9 +84,6 @@ function UploadBlog() {
                                             <label for="bloghead">Blog Title</label>
                                             <input onChange={(e) => handleChange(e)} type="text" name="bloghead" id="bloghead" className="h-10 border mt-1 rounded px-2 w-full bg-gray-50" placeholder="bloghead@domain.com" />
                                         </div>
-
-
-
                                         <div className="md:col-span-2">
                                             <label for="city">City</label>
                                             <input onChange={(e) => handleChange(e)} type="text" name="city" id="city" className="h-10 border mt-1 rounded px-2 w-full bg-gray-50" placeholder="" />
@@ -85,9 +104,6 @@ function UploadBlog() {
                                                 </button>
                                             </div>
                                         </div>
-
-                                        
-
                                         <div className="md:col-span-5 ">
                                             <label for="description">Description</label>
                                             <textarea onChange={(e) => handleChange(e)} type="text" name="description" id="description" className="h-10 border mt-1 rounded px-2 w-full bg-gray-50 resize-none" placeholder="" />
@@ -97,8 +113,6 @@ function UploadBlog() {
                                                 <button onClick={onUpload} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded">Submit</button>
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>

@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Vendor from "../../images/vendor1.png"
-import { collection, getDocs } from "firebase/firestore";
+import { getDocs } from "firebase/firestore";
 import { db } from '../../firebase'
 import firebase from "firebase/compat/app";
+import { collection, onSnapshot } from "firebase/firestore";
+import { getFirestore } from 'firebase/firestore';
 
 import PostUi from './PostUi'
 
 const Products = () => {
-  // const p = [{ id: 'WgpuqCK2UPr0EE3Hdf7F', flag: true, "category": "xyz", "description": "Shop1", "name": "Shop1", "image": Vendor, likes: ['apaZD5EGkVUpaZ1E9YhkKdSwbm43'] }, { id: 'mg2ihpOLh2XttwvA3QYA', flag: true, "category": "xyz", "description": "Shop2", "name": "Shop2", "image": Vendor }, { id: 3, "category": "xyz", "description": "Shop3", "name": "Shop3", "image": Vendor }, { id: 4, "category": "xyz", "description": "ShopName", "name": "ShopName", "image": Vendor }, { id: 5, "category": "xyz", "description": "ShopName", "name": "ShopName", "image": Vendor }, { id: 6, "category": "xyz", "description": "ShopName", "name": "Shop5", "image": Vendor }];
+  const p = [{ id: 'WgpuqCK2UPr0EE3Hdf7F', flag: true, "category": "xyz", "description": "Shop1", "name": "Shop1", "image": Vendor, likes: ['apaZD5EGkVUpaZ1E9YhkKdSwbm43'] }, { id: 'mg2ihpOLh2XttwvA3QYA', flag: true, "category": "xyz", "description": "Shop2", "name": "Shop2", "image": Vendor }, { id: 3, "category": "xyz", "description": "Shop3", "name": "Shop3", "image": Vendor }, { id: 4, "category": "xyz", "description": "ShopName", "name": "ShopName", "image": Vendor }, { id: 5, "category": "xyz", "description": "ShopName", "name": "ShopName", "image": Vendor }, { id: 6, "category": "xyz", "description": "ShopName", "name": "Shop5", "image": Vendor }];
 
   const [productsData, setProductData] = useState([])
 
@@ -25,25 +27,6 @@ const Products = () => {
       setProductData(temp_blogsData)
     }
     getPosts();
-
-    function abc() {
-      let temp = [];
-      const unSubscribe = db.blogs.orderBy('createdAt', 'desc').onSnapshot((querySnapshot) => {
-        console.log('invoked');
-        temp = [];
-        let promises = [];
-        querySnapshot.forEach((doc) => {
-          console.log(doc);
-          let data = { data: { ...doc.data() }, id: doc.id }
-          temp.push(data);
-        });
-        Promise.all(promises).then(() => {
-          setProductData(temp);
-        })
-      });
-      return unSubscribe;
-    }
-    abc();
 
   }, [])
 

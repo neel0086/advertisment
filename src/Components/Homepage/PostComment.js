@@ -7,13 +7,23 @@ import { useSelector } from 'react-redux'
 import { selectUser } from '../features/userSlice'
 function Comment({ item }) {
   const user = useSelector(selectUser);
-  const [comment, setComment] = useState('');
+
+  const [inputComment, setInputComment] = useState('');
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = db.blogs.doc(item.id).onSnapshot((snapshot) => {
+      setComments(snapshot.data().comments);
+    });
+
+    return unsubscribe;
+  }, [item.id])
 
   const doComment = (e) => {
     console.log(user)
     db.blogs.doc(item.id).get().then(snapshot => {
       db.blogs.doc(item.id).update({
-        comments: snapshot.data().comments ? [...snapshot.data().comments, { userName: user.displayName, comment: comment }] : [{ userName: user.displayName, comment: comment }]
+        comments: snapshot.data().comments ? [...snapshot.data().comments, { userName: user.displayName, comment: inputComment }] : [{ userName: user.displayName, comment: inputComment }]
       });
     });
   }
@@ -24,7 +34,7 @@ function Comment({ item }) {
         <div className="space-y-4  ">
 
           {
-            item.comments?.map((comment, index) => {
+            comments?.map((comment, index) => {
               return (
                 <div className="flex">
                   <div className="flex-shrink-0 mr-3">
@@ -96,7 +106,7 @@ function Comment({ item }) {
 
       </div>
       <div className="space-y-4 px-2 pb-2">
-        <input type="text" placeholder='No Abusive Comments' value={comment} name='comment' onChange={(e) => setComment(e.target.value)} className='bg-whitesmoke p-2 w-full outline-none font' />
+        <input type="text" placeholder='No Abusive Comments' value={inputComment} name='comment' onChange={(e) => setInputComment(e.target.value)} className='bg-whitesmoke p-2 w-full outline-none font' />
         <span onClick={doComment}>send</span>
       </div>
     </>
